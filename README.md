@@ -7,12 +7,13 @@ Installatie:
 
 cd ~/MagicMirror/modules 
 git clone https://github.com/dierckxtom/MMM-Recyclecollection.git
-cd MMM-DIFTAR-AFVALOPHALING
+
+cd MMM-Recyclecollection
 npm install 
 
 
 npm install axios
-
+cd
 **Config file:**
 
 {
