@@ -22,7 +22,7 @@ Module.register("MMM-RecycleCollection", {
     }
   },
 
-  getDom: function () {
+  /* getDom: function () {
     var wrapper = document.createElement("div");
     wrapper.style.fontSize = "44px";
     wrapper.style.fontFamily = "Arial, sans-serif";
@@ -47,4 +47,34 @@ Module.register("MMM-RecycleCollection", {
     }
     return wrapper;
   }
+
+  */
+
+getDom: function () {
+  var wrapper = document.createElement("div");
+  wrapper.style.fontSize = "18px";
+  wrapper.style.fontFamily = "Arial, sans-serif";
+  wrapper.style.color = "black";
+  wrapper.style.backgroundColor = "white"; // Make sure it's visible
+  wrapper.style.padding = "20px"; // Add padding
+
+  const staticData = [
+    { fractionName: "Plastic", timestamp: "2024-11-20" },
+    { fractionName: "Paper", timestamp: "2024-11-21" }
+  ];
+
+  staticData.forEach(item => {
+    var collectionItem = document.createElement("div");
+    collectionItem.classList.add("collection-item");
+    collectionItem.innerHTML = `
+      <div><strong>${item.fractionName}</strong></div>
+      <div>Collection Date: ${item.timestamp}</div>
+    `;
+    wrapper.appendChild(collectionItem);
+  });
+
+  return wrapper;
+}
+
+  
 });
