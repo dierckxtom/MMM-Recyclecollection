@@ -34,8 +34,8 @@ getDom: function () {
   console.log("Collection Data in getDom:", this.collectionData);  // Debug log
 
   // Set default collection data for testing
-  if (!this.collectionData) {
-    this.collectionData = [{ fractionName: "Test", timestamp: "2024-11-19" }];
+ // if (!this.collectionData) {
+ //   this.collectionData = [{ fractionName: "Test", timestamp: "2024-11-19" }];
   }
 
   if (this.collectionData && this.collectionData.length > 0) {
