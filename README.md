@@ -5,6 +5,12 @@ Ontwikkeld in Node.Js en geport naar magicMirror
 
 Installatie:
 
+cd ~/MagicMirror/modules 
+git clone https://github.com/dierckxtom/MMM-DIFTAR-AFVALOPHALING.git
+cd MMM-DIFTAR-AFVALOPHALING
+npm install 
+
+
 npm install axios
 
 **Config file:**
