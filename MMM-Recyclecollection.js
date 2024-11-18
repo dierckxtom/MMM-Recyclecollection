@@ -1,5 +1,5 @@
 
-Module.register("RecycleCollection", {
+Module.register("MMM-RecycleCollection", {
   // Default configuration
   defaults: {
     updateInterval: 10000, // Update every 10 seconds
