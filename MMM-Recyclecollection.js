@@ -17,7 +17,9 @@ socketNotificationReceived: function (notification, payload) {
     console.log("Setting collection data...");
     this.collectionData = payload;  // Ensure this is being set
     console.log("this.collectionData set:", this.collectionData); // Verify the data is being set
-    this.updateDom(); // Update the DOM to show the new data
+    setTimeout(() => {
+      this.updateDom();  // Ensure updateDom happens after data is set
+    }, 0);
   }
   if (notification === "COLLECTION_ERROR") {
     console.error("Error fetching collection data:", payload);
