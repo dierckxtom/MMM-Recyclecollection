@@ -6,7 +6,7 @@ Module.register("MMM-Recyclecollection", {
 
   start: function () {
     this.sendSocketNotification("GET_COLLECTION_DATA");
-  },
+  }
 
   // Handle the data received from node_helper.js
 socketNotificationReceived: function (notification, payload) {
