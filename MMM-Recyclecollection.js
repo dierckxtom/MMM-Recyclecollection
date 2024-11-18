@@ -14,7 +14,7 @@ socketNotificationReceived: function (notification, payload) {
   console.log("Payload received:", payload);           // Log the payload
 
   if (notification === "COLLECTION_DATA") {
-    console.log("Setting collection data...");
+    console.log("Setting collection data...", JSON.stringify(payload, null, 2));
     this.collectionData = payload;  // Ensure this is being set
     console.log("this.collectionData set:", this.collectionData); // Verify the data is being set
     setTimeout(() => {
