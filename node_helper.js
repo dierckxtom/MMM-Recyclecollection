@@ -4,13 +4,14 @@ const axios = require("axios");
 module.exports = NodeHelper.create({
   start: function () {
     console.log("RecycleCollection helper started...");
+    this.getCollectionData(); // Fetch data when the helper starts
   },
 
   // Fetch collection data from the API
   getCollectionData: async function () {
     const API_URL = 'https://api.fostplus.be/recyclecms/public/v1/collections';
     const ZIPCODE_ID = '2323-13014'; // Example
-    const STREET = 'https://data.vlaanderen.be/id/straatnaam-14879';
+    const STREET = 'https://data.vlaanderen.be/id/straatnaam-14879';  // Ensure this is the correct format
     const HOUSE_ID = '18';
     const FROM = '2024-11-15';
     const UNTIL = '2024-11-29';
@@ -43,7 +44,7 @@ module.exports = NodeHelper.create({
       if (collections && collections.length > 0) {
         const collectionData = collections.map(item => ({
           fractionName: item.fraction.name.nl,
-          timestamp: new Date(item.timestamp).toLocaleDateString()
+          timestamp: new Date(item.timestamp).toLocaleDateString()  // You can use a library like moment.js for formatting if needed
         }));
         console.log("Processed collection data:", collectionData); // Log processed data
         this.sendSocketNotification("COLLECTION_DATA", collectionData);
@@ -52,8 +53,16 @@ module.exports = NodeHelper.create({
         this.sendSocketNotification("COLLECTION_DATA", []); // Send empty data if no collections
       }
     } catch (error) {
-      console.error("Error fetching collection data:", error);
-      this.sendSocketNotification("COLLECTION_ERROR", error.message);
+      if (error.response) {
+        console.error("API responded with an error:", error.response.data);
+        this.sendSocketNotification("COLLECTION_ERROR", `API error: ${error.response.status} ${error.response.data}`);
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+        this.sendSocketNotification("COLLECTION_ERROR", "No response received from API");
+      } else {
+        console.error("Error during request setup:", error.message);
+        this.sendSocketNotification("COLLECTION_ERROR", error.message);
+      }
     }
   }
 });
