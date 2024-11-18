@@ -6,7 +6,7 @@ Ontwikkeld in Node.Js en geport naar magicMirror
 Installatie:
 
 cd ~/MagicMirror/modules 
-git clone https://github.com/dierckxtom/MMM-DIFTAR-AFVALOPHALING.git
+git clone https://github.com/dierckxtom/MMM-Recyclecollection.git
 cd MMM-DIFTAR-AFVALOPHALING
 npm install 
 
