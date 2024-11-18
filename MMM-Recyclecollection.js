@@ -11,12 +11,10 @@ Module.register("MMM-Recyclecollection", {
   // Handle the data received from node_helper.js
   socketNotificationReceived: function (notification, payload) {
     if (notification === "COLLECTION_DATA") {
-      console.log("Received collection data:", payload);  // Log received data
       this.collectionData = payload;
       this.updateDom(); // Update the DOM to show the new data
     }
     if (notification === "COLLECTION_ERROR") {
-      console.error("Error fetching collection data:", payload);  // Log error message
       this.collectionData = [{ fractionName: "Error", timestamp: payload }];
       this.updateDom();
     }
@@ -26,11 +24,6 @@ Module.register("MMM-Recyclecollection", {
     var wrapper = document.createElement("div");
     wrapper.style.fontSize = "18px";
     wrapper.style.fontFamily = "Arial, sans-serif";
-    wrapper.style.color = "red";
-    wrapper.style.backgroundColor = "white";  // Just to make sure it's visible
-
-
-
 
     if (this.collectionData && this.collectionData.length > 0) {
       this.collectionData.forEach(item => {
@@ -47,9 +40,4 @@ Module.register("MMM-Recyclecollection", {
     }
     return wrapper;
   }
-
-
-
-
-  
 });
