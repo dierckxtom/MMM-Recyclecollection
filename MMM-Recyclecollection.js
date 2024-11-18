@@ -10,21 +10,29 @@ Module.register("MMM-Recyclecollection", {
   },
 
   // Handle the data received from node_helper.js
-  socketNotificationReceived: function (notification, payload) {
-    console.log("Notification received:", notification);  // Log notification name
-    console.log("Payload received:", payload);           // Log the payload
+socketNotificationReceived: function (notification, payload) {
+  console.log("Notification received:", notification);  // Log notification name
+  console.log("Payload received:", payload);           // Log the payload
 
-    if (notification === "COLLECTION_DATA") {
-      console.log("Received collection data:", JSON.stringify(payload, null, 2));  // Use JSON.stringify for better readability
-      this.collectionData = payload;
-      this.updateDom(); // Update the DOM after data is set
+  if (notification === "COLLECTION_DATA") {
+    console.log("Received collection data:", JSON.stringify(payload, null, 2));
+    this.collectionData = payload;
+
+    // Ensure data is set before updating the DOM
+    if (this.collectionData && this.collectionData.length > 0) {
+      console.log("Collection Data is valid");
+      this.updateDom();
+    } else {
+      console.log("Collection Data is empty or invalid");
     }
-    if (notification === "COLLECTION_ERROR") {
-      console.error("Error fetching collection data:", payload); // Log the error
-      this.collectionData = [{ fractionName: "Error", timestamp: payload }];
-      this.updateDom(); // Update the DOM in case of an error
-    }
-  },
+  }
+
+  if (notification === "COLLECTION_ERROR") {
+    console.error("Error fetching collection data:", payload);
+    this.collectionData = [{ fractionName: "Error", timestamp: payload }];
+    this.updateDom();
+  }
+},
 
   getDom: function () {
     var wrapper = document.createElement("div");
