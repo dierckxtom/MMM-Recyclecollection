@@ -20,6 +20,16 @@ module.exports = NodeHelper.create({
 
     try {
       console.log("Making API request...");
+      
+      // Log the request parameters
+      console.log("Request params:", {
+        zipcodeId: ZIPCODE_ID,
+        streetId: STREET,
+        houseNumber: HOUSE_ID,
+        fromDate: FROM,
+        untilDate: UNTIL,
+        size: SIZE
+      });
 
       const response = await axios.get(API_URL, {
         params: {
@@ -37,6 +47,7 @@ module.exports = NodeHelper.create({
         timeout: 5000
       });
 
+      // Log the full API response
       console.log("API response received:", response.data);  // Log the full response
 
       const collections = response.data.items;
