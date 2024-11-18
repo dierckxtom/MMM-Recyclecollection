@@ -7,6 +7,7 @@ Module.register("MMM-Recyclecollection", {
   start: function () {
     this.collectionData = [];  // Initialize collectionData to avoid undefined errors
     this.sendSocketNotification("GET_COLLECTION_DATA");
+    console.log("aaa");
   },
 
   // Handle the data received from node_helper.js
