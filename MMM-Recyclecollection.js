@@ -10,8 +10,8 @@ Module.register("MMM-Recyclecollection", {
 
   // Handle the data received from node_helper.js
 socketNotificationReceived: function (notification, payload) {
-  console.log(" allookesNotification received:", notification);  // Log notification name
-  console.log(" aallooookes Payload received:", payload);           // Log the payload
+  console.log("Notification received:", notification);  // Log notification name
+  console.log("Payload received:", payload);           // Log the payload
 
   if (notification === "COLLECTION_DATA") {
     console.log("Setting collection data...", JSON.stringify(payload, null, 2));
