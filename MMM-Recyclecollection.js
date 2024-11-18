@@ -13,18 +13,16 @@ socketNotificationReceived: function (notification, payload) {
   console.log("Notification received:", notification);  // Log notification name
   console.log("Payload received:", payload);           // Log the payload
 
+socketNotificationReceived: function (notification, payload) {
   if (notification === "COLLECTION_DATA") {
-    console.log("Setting collection data...", JSON.stringify(payload, null, 2));
-    this.collectionData = payload;  // Ensure this is being set
-    console.log("this.collectionData set:", this.collectionData); // Verify the data is being set
-    setTimeout(() => {
-      this.updateDom();  // Ensure updateDom happens after data is set
-    }, 0);
+    console.log("Received collection data:", JSON.stringify(payload, null, 2));  // Use JSON.stringify for better readability
+    this.collectionData = payload;
+    this.updateDom(); // Update the DOM after data is set
   }
   if (notification === "COLLECTION_ERROR") {
-    console.error("Error fetching collection data:", payload);
+    console.error("Error fetching collection data:", payload); // Log the error
     this.collectionData = [{ fractionName: "Error", timestamp: payload }];
-    this.updateDom();
+    this.updateDom(); // Update the DOM in case of an error
   }
 },
 
