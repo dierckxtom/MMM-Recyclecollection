@@ -24,7 +24,7 @@ Module.register("MMM-Recyclecollection", {
 
   getDom: function () {
     var wrapper = document.createElement("div");
-    wrapper.style.fontSize = "44px";
+    wrapper.style.fontSize = "18px";
     wrapper.style.fontFamily = "Arial, sans-serif";
     wrapper.style.color = "red";
     wrapper.style.backgroundColor = "white";  // Just to make sure it's visible
