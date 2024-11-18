@@ -20,26 +20,31 @@ Module.register("MMM-Recyclecollection", {
     }
   },
 
-  getDom: function () {
-     console.log("Collection Data:", this.collectionData);  // Log the collection data here
-    
-    var wrapper = document.createElement("div");
-    wrapper.style.fontSize = "18px";
-    wrapper.style.fontFamily = "Arial, sans-serif";
+getDom: function () {
+  var wrapper = document.createElement("div");
+  wrapper.style.fontSize = "18px";
+  wrapper.style.fontFamily = "Arial, sans-serif";
 
-    if (this.collectionData && this.collectionData.length > 0) {
-      this.collectionData.forEach(item => {
-        var collectionItem = document.createElement("div");
-        collectionItem.classList.add("collection-item");
-        collectionItem.innerHTML = `
-          <div><strong>${item.fractionName}</strong></div>
-          <div>Collection Date: ${item.timestamp}</div>
-        `;
-        wrapper.appendChild(collectionItem);
-      });
-    } else {
-      wrapper.innerHTML = "No collection data available.";
-    }
-    return wrapper;
+  console.log("Collection Data in getDom:", this.collectionData);  // Debug log
+
+  // Set default collection data for testing
+  if (!this.collectionData) {
+    this.collectionData = [{ fractionName: "Test", timestamp: "2024-11-19" }];
   }
+
+  if (this.collectionData && this.collectionData.length > 0) {
+    this.collectionData.forEach(item => {
+      var collectionItem = document.createElement("div");
+      collectionItem.classList.add("collection-item");
+      collectionItem.innerHTML = `
+        <div><strong>${item.fractionName}</strong></div>
+        <div>Collection Date: ${item.timestamp}</div>
+      `;
+      wrapper.appendChild(collectionItem);
+    });
+  } else {
+    wrapper.innerHTML = "No collection data available.";
+  }
+  return wrapper;
+}
 });
