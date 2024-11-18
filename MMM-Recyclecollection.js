@@ -31,12 +31,7 @@ getDom: function () {
   wrapper.style.fontSize = "18px";
   wrapper.style.fontFamily = "Arial, sans-serif";
 
-  console.log("Collection Data in getDom:", this.collectionData);  // Debug log
-
-  // Set default collection data for testing
-  if (!this.collectionData) {
-    this.collectionData = [{ fractionName: "Test", timestamp: "2024-11-19" }];
-  }
+  console.log("Collection Data in getDom:", this.collectionData);  // Add this log to debug
 
   if (this.collectionData && this.collectionData.length > 0) {
     this.collectionData.forEach(item => {
@@ -53,4 +48,5 @@ getDom: function () {
   }
   return wrapper;
 }
+
 });
