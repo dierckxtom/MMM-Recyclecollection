@@ -26,6 +26,9 @@ Module.register("MMM-RecycleCollection", {
     var wrapper = document.createElement("div");
     wrapper.style.fontSize = "18px";
     wrapper.style.fontFamily = "Arial, sans-serif";
+    wrapper.style.color = "black";
+    wrapper.style.backgroundColor = "white";  // Just to make sure it's visible
+
 
     if (this.collectionData && this.collectionData.length > 0) {
       this.collectionData.forEach(item => {
