@@ -4,7 +4,17 @@ const axios = require("axios");
 module.exports = NodeHelper.create({
   start: function () {
     console.log("RecycleCollection helper started...");
-    this.getCollectionData(); // Fetch data when the helper starts
+    // Commented out to avoid immediate fetch
+    // this.getCollectionData();
+  },
+
+  // Handle socket notifications from the frontend
+  socketNotificationReceived: function (notification, payload) {
+    console.log("Node Helper received notification:", notification);
+    if (notification === "GET_COLLECTION_DATA") {
+      console.log("Fetching collection data...");
+      this.getCollectionData(); // Fetch data when requested by frontend
+    }
   },
 
   // Fetch collection data from the API
@@ -15,12 +25,19 @@ module.exports = NodeHelper.create({
     const HOUSE_ID = '18';
     const FROM = '2024-11-15';
     const UNTIL = '2024-11-29';
-    const SIZE = '2'; 
+    const SIZE = '2';
     const X_SECRET = 'recycleapp.be';
     const X_CONS = 'recycleapp.be';
 
     try {
-      console.log("Making API request...");
+      console.log("Making API request with parameters:", {
+        zipcodeId: ZIPCODE_ID,
+        streetId: STREET,
+        houseNumber: HOUSE_ID,
+        fromDate: FROM,
+        untilDate: UNTIL,
+        size: SIZE,
+      });
 
       const response = await axios.get(API_URL, {
         params: {
@@ -29,7 +46,7 @@ module.exports = NodeHelper.create({
           houseNumber: HOUSE_ID,
           fromDate: FROM,
           untilDate: UNTIL,
-          size: SIZE
+          size: SIZE,
         },
         headers: {
           'x-secret': X_SECRET,
@@ -38,30 +55,36 @@ module.exports = NodeHelper.create({
         timeout: 5000
       });
 
-      console.log("API response received:", response.data);  // Log the full response
+      console.log("API response status:", response.status);
+      console.log("Full API response data:", JSON.stringify(response.data, null, 2));
 
-      const collections = response.data.items;
-      if (collections && collections.length > 0) {
-        const collectionData = collections.map(item => ({
-          fractionName: item.fraction.name.nl,
-          timestamp: new Date(item.timestamp).toLocaleDateString()  // You can use a library like moment.js for formatting if needed
-        }));
-        console.log("Processed collection data:", collectionData); // Log processed data
-        this.sendSocketNotification("COLLECTION_DATA", collectionData);
+      if (response.data && response.data.items) {
+        const collections = response.data.items;
+        if (collections.length > 0) {
+          const collectionData = collections.map(item => ({
+            fractionName: item.fraction.name.nl,
+            timestamp: new Date(item.timestamp).toLocaleDateString(), // Format timestamp
+          }));
+          console.log("Processed collection data:", collectionData);
+          this.sendSocketNotification("COLLECTION_DATA", collectionData);
+        } else {
+          console.log("No collections found.");
+          this.sendSocketNotification("COLLECTION_DATA", []); // Send empty data if no collections
+        }
       } else {
-        console.log("No collections found.");
-        this.sendSocketNotification("COLLECTION_DATA", []); // Send empty data if no collections
+        console.warn("Unexpected API response structure.");
+        this.sendSocketNotification("COLLECTION_ERROR", "Unexpected API response structure");
       }
     } catch (error) {
       if (error.response) {
-        console.error("API responded with an error:", error.response.data);
-        this.sendSocketNotification("COLLECTION_ERROR", `API error: ${error.response.status} ${error.response.data}`);
+        console.error("API responded with an error:", error.response.status, error.response.data);
+        this.sendSocketNotification("COLLECTION_ERROR", `API error: ${error.response.status} ${error.response.statusText}`);
       } else if (error.request) {
         console.error("No response received:", error.request);
         this.sendSocketNotification("COLLECTION_ERROR", "No response received from API");
       } else {
         console.error("Error during request setup:", error.message);
-        this.sendSocketNotification("COLLECTION_ERROR", error.message);
+        this.sendSocketNotification("COLLECTION_ERROR", `Request error: ${error.message}`);
       }
     }
   }
