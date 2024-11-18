@@ -5,7 +5,7 @@ Module.register("MMM-Recyclecollection", {
   },
 
   start: function () {
-    console.log("aaa");
+
     this.collectionData = [];  // Initialize collectionData to avoid undefined errors
     this.sendSocketNotification("GET_COLLECTION_DATA");
     
@@ -13,6 +13,7 @@ Module.register("MMM-Recyclecollection", {
 
   // Handle the data received from node_helper.js
 socketNotificationReceived: function (notification, payload) {
+      console.log("aaa");
   console.log("Notification received:", notification);  // Log notification name
   console.log("Payload received:", payload);           // Log the payload
 
