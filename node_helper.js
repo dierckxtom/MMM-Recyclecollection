@@ -31,18 +31,15 @@ module.exports = NodeHelper.create({
     const X_SECRET = 'recycleapp.be';
     const X_CONS = 'recycleapp.be';
 
- // Define dynamic dates
-    const currentDate = new Date();
-    const fromDate = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
-    const untilDate = new Date(currentDate.setDate(currentDate.getDate() + 14)).toISOString().split('T')[0]; // 2 weeks later
+
     
     try {
       console.log("Making API request with parameters:", {
         zipcodeId: ZIPCODE_ID,
         streetId: STREET,
         houseNumber: HOUSE_ID,
-        fromDate: fromdate,
-        untilDate: untildate,
+        fromDate: FROM,
+        untilDate: UNTIL,
         size: SIZE,
       });
 
