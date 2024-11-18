@@ -21,6 +21,8 @@ Module.register("MMM-Recyclecollection", {
   },
 
   getDom: function () {
+     console.log("Collection Data:", this.collectionData);  // Log the collection data here
+    
     var wrapper = document.createElement("div");
     wrapper.style.fontSize = "18px";
     wrapper.style.fontFamily = "Arial, sans-serif";
