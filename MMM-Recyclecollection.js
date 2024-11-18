@@ -1,13 +1,14 @@
 Module.register("MMM-Recyclecollection", {
   // Default configuration
   defaults: {
-    updateInterval: 10000 * 60, // Update every 10 seconds
+    updateInterval: 10000, // Update every 10 seconds
   },
 
   start: function () {
+    console.log("aaa");
     this.collectionData = [];  // Initialize collectionData to avoid undefined errors
     this.sendSocketNotification("GET_COLLECTION_DATA");
-    console.log("aaa");
+    
   },
 
   // Handle the data received from node_helper.js
