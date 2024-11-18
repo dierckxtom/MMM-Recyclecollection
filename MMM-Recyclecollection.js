@@ -29,11 +29,7 @@ Module.register("MMM-RecycleCollection", {
     wrapper.style.color = "red";
     wrapper.style.backgroundColor = "white";  // Just to make sure it's visible
 
-    // Test with static data
-  const staticData = [
-    { fractionName: "Plastic", timestamp: "2024-11-20" },
-    { fractionName: "Paper", timestamp: "2024-11-21" }
-  ];
+
 
 
     if (this.collectionData && this.collectionData.length > 0) {
