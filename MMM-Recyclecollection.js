@@ -9,16 +9,22 @@ Module.register("MMM-Recyclecollection", {
   },
 
   // Handle the data received from node_helper.js
-  socketNotificationReceived: function (notification, payload) {
-    if (notification === "COLLECTION_DATA") {
-      this.collectionData = payload;
-      this.updateDom(); // Update the DOM to show the new data
-    }
-    if (notification === "COLLECTION_ERROR") {
-      this.collectionData = [{ fractionName: "Error", timestamp: payload }];
-      this.updateDom();
-    }
-  },
+socketNotificationReceived: function (notification, payload) {
+  console.log("Notification received:", notification);  // Log notification name
+  console.log("Payload received:", payload);           // Log the payload
+
+  if (notification === "COLLECTION_DATA") {
+    console.log("Setting collection data...");
+    this.collectionData = payload;  // Ensure this is being set
+    console.log("this.collectionData set:", this.collectionData); // Verify the data is being set
+    this.updateDom(); // Update the DOM to show the new data
+  }
+  if (notification === "COLLECTION_ERROR") {
+    console.error("Error fetching collection data:", payload);
+    this.collectionData = [{ fractionName: "Error", timestamp: payload }];
+    this.updateDom();
+  }
+},
 
 getDom: function () {
   var wrapper = document.createElement("div");
