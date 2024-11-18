@@ -19,6 +19,8 @@ module.exports = NodeHelper.create({
     const X_CONS = 'recycleapp.be';
 
     try {
+      console.log("Making API request...");
+
       const response = await axios.get(API_URL, {
         params: {
           zipcodeId: ZIPCODE_ID,
@@ -35,19 +37,23 @@ module.exports = NodeHelper.create({
         timeout: 5000
       });
 
-      const collections = response.data.items;
-      // Return only the relevant collection data (fraction name and timestamp)
-      const collectionData = collections.map(item => ({
-        fractionName: item.fraction.name.nl,
-        timestamp: new Date(item.timestamp).toLocaleDateString()
-      }));
+      console.log("API response received:", response.data);  // Log the full response
 
-      // Send data to frontend via socket notification
-      this.sendSocketNotification("COLLECTION_DATA", collectionData);
+      const collections = response.data.items;
+      if (collections && collections.length > 0) {
+        const collectionData = collections.map(item => ({
+          fractionName: item.fraction.name.nl,
+          timestamp: new Date(item.timestamp).toLocaleDateString()
+        }));
+        console.log("Processed collection data:", collectionData); // Log processed data
+        this.sendSocketNotification("COLLECTION_DATA", collectionData);
+      } else {
+        console.log("No collections found.");
+        this.sendSocketNotification("COLLECTION_DATA", []); // Send empty data if no collections
+      }
     } catch (error) {
       console.error("Error fetching collection data:", error);
       this.sendSocketNotification("COLLECTION_ERROR", error.message);
     }
   }
 });
-
