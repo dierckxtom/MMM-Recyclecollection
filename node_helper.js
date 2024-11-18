@@ -17,6 +17,11 @@ module.exports = NodeHelper.create({
     }
   },
 
+  // Define dynamic dates
+    const currentDate = new Date();
+    const fromDate = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
+    const untilDate = new Date(currentDate.setDate(currentDate.getDate() + 14)).toISOString().split('T')[0]; // 2 weeks later
+
   // Fetch collection data from the API
   getCollectionData: async function () {
     const API_URL = 'https://api.fostplus.be/recyclecms/public/v1/collections';
@@ -34,8 +39,8 @@ module.exports = NodeHelper.create({
         zipcodeId: ZIPCODE_ID,
         streetId: STREET,
         houseNumber: HOUSE_ID,
-        fromDate: FROM,
-        untilDate: UNTIL,
+        fromDate: fromdate,
+        untilDate: untildate,
         size: SIZE,
       });
 
