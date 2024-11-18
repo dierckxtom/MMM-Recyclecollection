@@ -1,4 +1,3 @@
-
 Module.register("MMM-RecycleCollection", {
   // Default configuration
   defaults: {
@@ -12,10 +11,12 @@ Module.register("MMM-RecycleCollection", {
   // Handle the data received from node_helper.js
   socketNotificationReceived: function (notification, payload) {
     if (notification === "COLLECTION_DATA") {
+      console.log("Received collection data:", payload);  // Log received data
       this.collectionData = payload;
       this.updateDom(); // Update the DOM to show the new data
     }
     if (notification === "COLLECTION_ERROR") {
+      console.error("Error fetching collection data:", payload);  // Log error message
       this.collectionData = [{ fractionName: "Error", timestamp: payload }];
       this.updateDom();
     }
