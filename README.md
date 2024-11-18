@@ -1,7 +1,10 @@
 # MMM-DIFTAR-AFVALOPHALING
+
+WIP: Adres & datum moet nog als parameter worden opgenomen.
+
 Toont de volgende ophaaldagen voor Diftar via Recycleapp.be API
 
-Ontwikkeld in Node.Js en geport naar magicMirror
+Ontwikkeld in Node.JS en geport naar magicMirror
 
 Installatie:
 
@@ -14,6 +17,7 @@ npm install
 
 npm install axios
 cd
+
 **Config file:**
 
 {
