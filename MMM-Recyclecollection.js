@@ -57,7 +57,7 @@ socketNotificationReceived: function (notification, payload) {
         if (item.fractionName === 'PMD') {
     var image = document.createElement("img");
     image.src = "./modules/MMM-Recyclecollection/images/bin.svg"; // Adjust path as per your structure
-    image.alt = "GFT Image";
+    image.alt = "";
     image.style.width = "100px";
     image.style.height = "auto";
     collectionItem.appendChild(image);
