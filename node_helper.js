@@ -70,7 +70,6 @@ module.exports = NodeHelper.create({
           const collectionData = collections.map(item => ({
             fractionName: item.fraction.name.nl,
             timestamp: new Date(item.timestamp).toLocaleDateString(), // Format timestamp
-            image: item.logo.regular.2x,
           }));
           console.log("Processed collection data:", collectionData);
           this.sendSocketNotification("COLLECTION_DATA", collectionData);
