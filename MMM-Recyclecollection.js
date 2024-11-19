@@ -39,7 +39,7 @@ socketNotificationReceived: function (notification, payload) {
 
   getDom: function () {
     var wrapper = document.createElement("div");
-    wrapper.style.fontSize = "18px";
+    wrapper.style.fontSize = "24px";
     wrapper.style.fontFamily = "Arial, sans-serif";
 
     console.log("Collection Data in getDom:", this.collectionData);  // Add this log to debug
@@ -49,8 +49,8 @@ socketNotificationReceived: function (notification, payload) {
         var collectionItem = document.createElement("div");
         collectionItem.classList.add("collection-item");
         collectionItem.innerHTML = `
-          <div><strong>${item.fractionName}</strong></div>
-          <div>Collection Date: ${item.timestamp}</div>
+          <div><strong>Afval: ${item.fractionName}</strong></div>
+          <div>Ophaaldatum: ${item.timestamp}</div>
         `;
         wrapper.appendChild(collectionItem);
       });
