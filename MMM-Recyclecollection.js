@@ -52,6 +52,17 @@ socketNotificationReceived: function (notification, payload) {
           <div><strong>Fractie: ${item.fractionName}</strong></div>
           <div>Ophaaldatum: ${item.timestamp}</div>
         `;
+
+        //add image func
+        if (item.fractionName === 'GFT') {
+    var image = document.createElement("img");
+    image.src = "./modules/MMM-Recyclecollection/images/bin.svg"; // Adjust path as per your structure
+    image.alt = "GFT Image";
+    image.style.width = "100px";
+    image.style.height = "auto";
+    collectionItem.appendChild(image);
+}
+        
         wrapper.appendChild(collectionItem);
       });
     } else {
