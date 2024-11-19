@@ -51,6 +51,7 @@ socketNotificationReceived: function (notification, payload) {
         collectionItem.innerHTML = `
           <div><strong>Fractie: ${item.fractionName}</strong></div>
           <div>Ophaaldatum: ${item.timestamp}</div>
+          <div>${item.image}</div>
         `;
         wrapper.appendChild(collectionItem);
       });
