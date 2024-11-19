@@ -1,5 +1,8 @@
 const NodeHelper = require("node_helper");
 const axios = require("axios");
+const currentDate = new Date();
+const fromDate = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
+const untilDate = new Date(currentDate.setDate(currentDate.getDate() + 14)).toISOString().split('T')[0]; // 2 weeks later
 
 module.exports = NodeHelper.create({
   start: function () {
