@@ -53,7 +53,7 @@ socketNotificationReceived: function (notification, payload) {
           <div>Ophaaldatum: ${item.timestamp}</div>
         `;
 
-        //add image func
+        //add image function - not operational yet
         if (item.fractionName === 'PMD') {
     var image = document.createElement("img");
     image.src = "./modules/MMM-Recyclecollection/images/bin.jpg"; // Adjust path as per your structure
