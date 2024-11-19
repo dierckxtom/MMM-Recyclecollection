@@ -49,7 +49,7 @@ socketNotificationReceived: function (notification, payload) {
         var collectionItem = document.createElement("div");
         collectionItem.classList.add("collection-item");
         collectionItem.innerHTML = `
-          <div><strong>Afval: ${item.fractionName}</strong></div>
+          <div><strong>Fractie: ${item.fractionName}</strong></div>
           <div>Ophaaldatum: ${item.timestamp}</div>
         `;
         wrapper.appendChild(collectionItem);
