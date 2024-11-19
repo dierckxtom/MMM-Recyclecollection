@@ -29,8 +29,8 @@ module.exports = NodeHelper.create({
     const STREET = 'https://data.vlaanderen.be/id/straatnaam-14879';  // Ensure this is the correct format
     const HOUSE_ID = '18';
     const FROM = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
-    const UNTIL = new Date(currentDate.setDate(currentDate.getDate() + 7)).toISOString().split('T')[0]; // 1 week later
-    const SIZE = '2';
+    const UNTIL = new Date(currentDate.setDate(currentDate.getDate() + 14)).toISOString().split('T')[0]; // 2 weeks later
+    const SIZE = '10';
     const X_SECRET = 'recycleapp.be';
     const X_CONS = 'recycleapp.be';
 
