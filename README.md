@@ -1,7 +1,7 @@
 # MMM-DIFTAR-AFVALOPHALING
 
 De correcte straatinforamtie moet worden aangevuld in de node_helper.
-Zie hiervoor in de bijgevoegde csv en gebruik de huidige helper als referentie.
+Zie hiervoor in de bijgevoegde csv (in de zip) en gebruik de huidige helper als referentie.
 
 Toont de volgende ophaaldagen voor Diftar via Recycleapp.be API
 
