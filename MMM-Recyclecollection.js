@@ -54,7 +54,7 @@ socketNotificationReceived: function (notification, payload) {
         `;
 
         //add image func
-        if (item.fractionName === 'GFT') {
+        if (item.fractionName === 'PMD') {
     var image = document.createElement("img");
     image.src = "./modules/MMM-Recyclecollection/images/bin.svg"; // Adjust path as per your structure
     image.alt = "GFT Image";
