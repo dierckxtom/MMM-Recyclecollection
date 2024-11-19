@@ -1,6 +1,7 @@
 # MMM-DIFTAR-AFVALOPHALING
 
-WIP: Adres & datum moet nog als parameter worden opgenomen.
+De correcte straatinforamtie moet worden aangevuld in de node_helper.
+Zie hiervoor in de bijgevoegde csv en gebruik de huidige helper als referentie.
 
 Toont de volgende ophaaldagen voor Diftar via Recycleapp.be API
 
