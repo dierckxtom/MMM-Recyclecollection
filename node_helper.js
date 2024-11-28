@@ -6,8 +6,14 @@ const currentDate = new Date();
 module.exports = NodeHelper.create({
   start: function () {
     console.log("RecycleCollection helper started...");
-    // Commented out to avoid immediate fetch
-    // this.getCollectionData();
+    
+    this.getCollectionData();
+
+    // Schedule getCollectionData to run every 24 hours (in milliseconds: 24 * 60 * 60 * 1000)
+    setInterval(() => {
+      console.log("Running scheduled job every 24 hours");
+      this.getCollectionData();
+    }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
   },
 
   // Handle socket notifications from the frontend
