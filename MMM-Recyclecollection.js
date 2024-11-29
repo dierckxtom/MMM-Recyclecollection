@@ -54,6 +54,13 @@ socketNotificationReceived: function (notification, payload) {
         `;
 
         //add image function - not operational yet
+         if (item.fractionName === 'PMD') {
+    var image = document.createElement("img");
+    image.src = "./modules/MMM-Recyclecollection/images/bin.jpg"; // Adjust path as per your structure
+    image.alt = "";
+    image.style.width = "100px";
+    image.style.height = "auto";
+    collectionItem.appendChild(image);
 
 }
         
