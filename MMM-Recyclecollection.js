@@ -1,7 +1,7 @@
 Module.register("MMM-Recyclecollection", {
   // Default configuration
   defaults: {
-    updateInterval: 10000*60, // Update every 10 seconds
+    updateInterval: 10000*60, // Update every 6 minutes
   },
 
   start: function () {
@@ -54,13 +54,7 @@ socketNotificationReceived: function (notification, payload) {
         `;
 
         //add image function - not operational yet
-        if (item.fractionName === 'PMD') {
-    var image = document.createElement("img");
-    image.src = "./modules/MMM-Recyclecollection/images/bin.jpg"; // Adjust path as per your structure
-    image.alt = "";
-    image.style.width = "100px";
-    image.style.height = "auto";
-    collectionItem.appendChild(image);
+
 }
         
         wrapper.appendChild(collectionItem);
