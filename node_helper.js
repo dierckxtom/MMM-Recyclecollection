@@ -35,7 +35,7 @@ module.exports = NodeHelper.create({
     const HOUSE_ID = '1';
     const FROM = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
     const UNTIL = new Date(currentDate.setDate(currentDate.getDate() + 7)).toISOString().split('T')[0]; // 1 weeks later
-    const SIZE = '10';
+    const SIZE = '3'; //Number of records to return on screen
     const X_SECRET = 'recycleapp.be';
     const X_CONS = 'recycleapp.be';
 
