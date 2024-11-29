@@ -50,7 +50,7 @@ socketNotificationReceived: function (notification, payload) {
         collectionItem.classList.add("collection-item");
         collectionItem.innerHTML = `
           <div><strong><span style="color: green;">Fractie:</span> ${item.fractionName}</strong></div>
-          <div>Ophaaldatum: ${item.timestamp}</div>
+          <div><span style="color: green;">Ophaaldatum:</span> ${item.timestamp}</div>
         `;
 
         //add image function - not operational yet
