@@ -34,7 +34,8 @@ module.exports = NodeHelper.create({
     const STREET = 'https://data.vlaanderen.be/id/straatnaam-14879';  // Ensure this is the correct format
     const HOUSE_ID = '1';
     const FROM = currentDate.toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
-    const UNTIL = new Date(currentDate.setDate(currentDate.getDate() + 5)).toISOString().split('T')[0]; // 6 days later
+    const UNTIL = new Date(currentDate.getTime() + 6 * 24 * 60 * 60 * 1000) // Add 6 days
+      .toISOString().split('T')[0]; // Convert to YYYY-MM-DD format
     const SIZE = '3'; //Number of records to return on screen
     const X_SECRET = 'recycleapp.be';
     const X_CONS = 'recycleapp.be';
@@ -68,6 +69,7 @@ module.exports = NodeHelper.create({
       });
 
       console.log("API response status:", response.status);
+      console.log(`Fetching data from: ${FROM} until: ${UNTIL}`);
       console.log("Full API response data:", JSON.stringify(response.data, null, 2));
 
       if (response.data && response.data.items) {
