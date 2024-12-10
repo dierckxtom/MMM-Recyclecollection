@@ -13,25 +13,24 @@ Module.register("MMM-Recyclecollection", {
 
   // Handle the data received from node_helper.js
 socketNotificationReceived: function (notification, payload) {
-      console.log("aaa");
-  console.log("Notification received:", notification);  // Log notification name
-  console.log("Payload received:", payload);           // Log the payload
+  Log.log("[MMM-Recyclecollection] Notification received:", notification);  // Log notification name
+  Log.log("[MMM-Recyclecollection] Payload received:", payload);            // Log the payload
 
   if (notification === "COLLECTION_DATA") {
-    console.log("Received collection data:", JSON.stringify(payload, null, 2));
+    Log.log("[MMM-Recyclecollection] Received collection data:", JSON.stringify(payload, null, 2));
     this.collectionData = payload;
 
     // Ensure data is set before updating the DOM
     if (this.collectionData && this.collectionData.length > 0) {
-      console.log("Collection Data is valid");
+      Log.log("[MMM-Recyclecollection] Collection Data is valid");
       this.updateDom();
     } else {
-      console.log("Collection Data is empty or invalid");
+      Log.log("[MMM-Recyclecollection] Collection Data is empty or invalid");
     }
   }
 
   if (notification === "COLLECTION_ERROR") {
-    console.error("Error fetching collection data:", payload);
+    Log.error("[MMM-Recyclecollection] Error fetching collection data:", payload);
     this.collectionData = [{ fractionName: "Error", timestamp: payload }];
     this.updateDom();
   }
@@ -42,7 +41,7 @@ socketNotificationReceived: function (notification, payload) {
     wrapper.style.fontSize = "24px";
     wrapper.style.fontFamily = "Arial, sans-serif";
 
-    console.log("Collection Data in getDom:", this.collectionData);  // Add this log to debug
+    Log.log("[MMM-Recyclecollection] Collection Data in getDom:", this.collectionData);  // Add this log to debug
 
     if (this.collectionData && this.collectionData.length > 0) {
       this.collectionData.forEach(item => {
