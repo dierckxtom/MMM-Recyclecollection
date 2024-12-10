@@ -1,4 +1,4 @@
-# MMM-DIFTAR-AFVALOPHALING
+# MMM-Recyclecollection
 
 ![image](https://github.com/user-attachments/assets/9d9168a1-5f88-4097-b433-5e9cb9cdc271)
 
