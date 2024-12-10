@@ -12,15 +12,8 @@ Ontwikkeld in Node.JS en geport naar magicMirror
 
 Installatie:
 
-cd ~/MagicMirror/modules 
-git clone https://github.com/dierckxtom/MMM-Recyclecollection.git
-
-cd MMM-Recyclecollection
-npm install 
-
-
-npm install axios
-cd
+cd ~/MagicMirror/modules
+git clone https://github.com/dierckxtom/MMM-Recyclecollection
 
 **Config file:**
 

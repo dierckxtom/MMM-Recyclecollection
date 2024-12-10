@@ -1,5 +1,4 @@
 const NodeHelper = require("node_helper");
-const axios = require("axios");
 const currentDate = new Date();
 
 
@@ -51,16 +50,16 @@ module.exports = NodeHelper.create({
         untilDate: UNTIL,
         size: SIZE,
       });
+      const queryParams = new URLSearchParams({
+        zipcodeId: ZIPCODE_ID,
+        streetId: STREET,
+        houseNumber: HOUSE_ID,
+        fromDate: FROM,
+        untilDate: UNTIL,
+        size: SIZE,
+      });
 
-      const response = await axios.get(API_URL, {
-        params: {
-          zipcodeId: ZIPCODE_ID,
-          streetId: STREET,
-          houseNumber: HOUSE_ID,
-          fromDate: FROM,
-          untilDate: UNTIL,
-          size: SIZE,
-        },
+      const response = await fetch(`${API_URL}?${queryParams.toString()}`, {
         headers: {
           'x-secret': X_SECRET,
           'x-consumer': X_CONS,
@@ -68,12 +67,18 @@ module.exports = NodeHelper.create({
         timeout: 5000
       });
 
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
       console.log("API response status:", response.status);
       console.log(`Fetching data from: ${FROM} until: ${UNTIL}`);
       console.log("Full API response data:", JSON.stringify(response.data, null, 2));
 
-      if (response.data && response.data.items) {
-        const collections = response.data.items;
+      if (data && data.items) {
+        const collections = data.items;
         if (collections.length > 0) {
           const collectionData = collections.map(item => ({
             fractionName: item.fraction.name.nl,

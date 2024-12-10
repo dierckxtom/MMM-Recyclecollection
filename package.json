@@ -13,9 +13,6 @@
 		"url": "https://github.com/dierckxtom/MMM-Recyclecollection"
 	},
   "author": "Tom Dierckx",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^1.0.0"
-  }
+  "license": "MIT"
 }
 
