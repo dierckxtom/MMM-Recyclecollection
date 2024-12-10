@@ -25,7 +25,7 @@ cd
 **Config file:**
 
 {
-  module: "RecycleCollection",
+  module: "MMM-Recyclecollection",
   position: "top_right", // You can place it anywhere on the screen
   config: {
     // You can add additional configuration here if needed
