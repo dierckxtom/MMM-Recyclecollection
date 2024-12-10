@@ -1,34 +1,43 @@
-# MMM-DIFTAR-AFVALOPHALING
+# MMM-Recyclecollection
 
-![image](https://github.com/user-attachments/assets/9d9168a1-5f88-4097-b433-5e9cb9cdc271)
+MMM-Recyclecollection is een module voor de [MagicMirror](https://github.com/MagicMirrorOrg/MagicMirror).
 
-
-De correcte straatinformatie moet worden aangevuld in de node_helper. (postcode, straat, nr)
+De correcte straatinformatie moet worden aangevuld in de `node_helper`. (postcode, straat, nr)
 Zie hiervoor in de bijgevoegde csv (in de zip) en gebruik de huidige helper als referentie.
 
-Toont de volgende ophaaldagen voor Diftar via Recycleapp.be API
+Toont de volgende ophaaldagen voor Diftar via Recycleapp.be API.
 
-Ontwikkeld in Node.JS en geport naar magicMirror
+Ontwikkeld in Node.js en geport naar MagicMirror.
 
-Installatie:
+## Screenshot
 
-cd ~/MagicMirror/modules 
-git clone https://github.com/dierckxtom/MMM-Recyclecollection.git
+![screenshot](images/screenshot.png)
 
-cd MMM-Recyclecollection
-npm install 
+## Installation
 
+```bash
+cd ~/MagicMirror/modules
+git clone https://github.com/dierckxtom/MMM-Recyclecollection
+```
 
-npm install axios
-cd
+## Update
 
-**Config file:**
+*Note:* Backup your changes to the `node_helper.js` if you have made any changes before updating.
 
-{
-  module: "RecycleCollection",
-  position: "top_right", // You can place it anywhere on the screen
-  config: {
-    // You can add additional configuration here if needed
-  }
-}
+```bash
+cd ~/MagicMirror/modules/MMM-Recyclecollection
+git reset --hard
+git pull
+```
 
+## Configuration
+
+```js
+  {
+    module: "MMM-Recyclecollection",
+    position: "top_right", // You can place it anywhere on the screen
+    config: {
+      // You can add additional configuration here if needed
+    }
+  },
+```
