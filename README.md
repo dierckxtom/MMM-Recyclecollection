@@ -1,7 +1,8 @@
 # MMM-Recyclecollection
 
-![image](https://github.com/user-attachments/assets/9d9168a1-5f88-4097-b433-5e9cb9cdc271)
+## Screenshot
 
+![screenshot](images/screenshot.png)
 
 De correcte straatinformatie moet worden aangevuld in de node_helper. (postcode, straat, nr)
 Zie hiervoor in de bijgevoegde csv (in de zip) en gebruik de huidige helper als referentie.
