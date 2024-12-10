@@ -20,6 +20,16 @@ cd ~/MagicMirror/modules
 git clone https://github.com/dierckxtom/MMM-Recyclecollection
 ```
 
+## Update
+
+*Note:* Backup your changes to the `node_helper.js` if you have made any changes before updating.
+
+```bash
+cd ~/MagicMirror/modules/MMM-Recyclecollection
+git reset --hard
+git pull
+```
+
 ## Configuration
 
 ```js
